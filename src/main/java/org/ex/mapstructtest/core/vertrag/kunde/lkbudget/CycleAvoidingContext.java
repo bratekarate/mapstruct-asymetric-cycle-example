@@ -1,7 +1,5 @@
 package org.ex.mapstructtest.core.vertrag.kunde.lkbudget;
 
-import org.ex.mapstructtest.api.vertrag.kunde.lkbudget.LkBudgetKundenvertragDto;
-import org.ex.mapstructtest.core.vertrag.kunde.lkbudget.LkBudgetKundenvertrag;
 import org.mapstruct.BeforeMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.TargetType;
