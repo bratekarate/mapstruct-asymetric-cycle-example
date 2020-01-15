@@ -10,8 +10,5 @@ import java.util.Set;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface LeistungskategorieMapper {
-
-
     Leistungskategorie toLk(LeistungskategorieDto dto);
-
 }

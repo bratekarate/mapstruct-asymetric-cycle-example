@@ -35,11 +35,8 @@ public class LkBudgetKundenvertragTests {
         lkBudgetKundenvertragDto.setLeistungskategorien(lkDtos);
 
         LeistungskategorieMapper lkMapper = new LeistungskategorieMapperImpl();
-        LkBudgetKundenVertragMapperImpl_ lkBudgetMapperDelegate = new LkBudgetKundenVertragMapperImpl_();
-        ReflectionTestUtils.setField(lkBudgetMapperDelegate, "leistungskategorieMapper", lkMapper);
-
         LkBudgetKundenVertragMapper lkBudgetKvMapper = new LkBudgetKundenVertragMapperImpl();
-        ReflectionTestUtils.setField(lkBudgetKvMapper, "delegate", lkBudgetMapperDelegate);
+        ReflectionTestUtils.setField(lkBudgetKvMapper, "leistungskategorieMapper", lkMapper);
 
         LkBudgetKundenvertrag lkBudgetKundenvertrag =
                 lkBudgetKvMapper.toDbo(lkBudgetKundenvertragDto, new LkvLeistungskategorieContext(), new CycleAvoidingContext());
