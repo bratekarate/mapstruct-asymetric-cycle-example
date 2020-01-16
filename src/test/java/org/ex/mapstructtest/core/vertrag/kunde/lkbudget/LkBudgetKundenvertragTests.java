@@ -18,16 +18,18 @@ public class LkBudgetKundenvertragTests {
 
     @Test
     @DisplayName("Test mappers for LkBudgetKundenvertrag")
-    void testMapping() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
-        LeistungskategorieDto lkDto = new LeistungskategorieDto();
-        lkDto.setBeschreibung("TestLk");
-        lkDto.setId(1L);
+    void testMapping() {
+        LeistungskategorieDto lkDto = LeistungskategorieDto.builder()
+                .id(1L)
+                .beschreibung("Test LK")
+                .build();
 
-        LkBudgetKundenvertragDto lkBudgetKundenvertragDto = new LkBudgetKundenvertragDto();
-        lkBudgetKundenvertragDto.setId(1L);
-        lkBudgetKundenvertragDto.setVertragsNummer("test nr");
         Set<LeistungskategorieDto> lkDtos = Set.of(lkDto);
-        lkBudgetKundenvertragDto.setLeistungskategorien(lkDtos);
+        LkBudgetKundenvertragDto lkBudgetKundenvertragDto = LkBudgetKundenvertragDto.builder()
+                .id(1L)
+                .vertragsNummer("test nr")
+                .leistungskategorien(lkDtos)
+                .build();
 
         LeistungskategorieMapper lkMapper = new LeistungskategorieMapperImpl();
         LkBudgetKundenVertragMapper lkBudgetKvMapper = new LkBudgetKundenVertragMapperImpl();

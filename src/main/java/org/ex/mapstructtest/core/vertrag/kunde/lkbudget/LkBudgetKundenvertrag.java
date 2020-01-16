@@ -1,12 +1,14 @@
 package org.ex.mapstructtest.core.vertrag.kunde.lkbudget;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LkBudgetKundenvertrag {
     private Long id;
     private String vertragsNummer;

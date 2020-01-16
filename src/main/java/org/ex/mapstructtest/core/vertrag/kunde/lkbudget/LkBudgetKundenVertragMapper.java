@@ -8,25 +8,25 @@ import org.mapstruct.*;
 
 import java.util.Set;
 
-@Mapper(unmappedSourcePolicy = ReportingPolicy.ERROR, uses = LeistungskategorieMapper.class)
-public abstract class LkBudgetKundenVertragMapper {
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, uses = LeistungskategorieMapper.class)
+public interface LkBudgetKundenVertragMapper {
     @Mappings({
-            @Mapping(target = "lkvLeistungskategorien", source = "dto.leistungskategorien")
+            @Mapping(target = "lkvLeistungskategorien", source = "leistungskategorien")
     })
-    public abstract LkBudgetKundenvertrag toDbo(LkBudgetKundenvertragDto dto,
-                                                @Context LkvLeistungskategorieContext lkvlkCtx,
-                                                @Context CycleAvoidingContext cycleCtx);
+    LkBudgetKundenvertrag toDbo(LkBudgetKundenvertragDto dto,
+                                @Context LkvLeistungskategorieContext lkvlkCtx,
+                                @Context CycleAvoidingContext cycleCtx);
 
-    public abstract Set<LkvLeistungskategorie> toDbo(Set<LeistungskategorieDto> dto,
-                                                     @Context LkvLeistungskategorieContext lkvlkCtx,
-                                                     @Context CycleAvoidingContext cycleCtx);
+    Set<LkvLeistungskategorie> toDbo(Set<LeistungskategorieDto> dto,
+                                     @Context LkvLeistungskategorieContext lkvlkCtx,
+                                     @Context CycleAvoidingContext cycleCtx);
 
     @Mapping(target = "id", ignore = true)
-    public abstract LkvLeistungskategorie toDbo(LkvLeistungskategorieDto dto,
-                                                @Context LkvLeistungskategorieContext lkvlklkvlkCtx,
-                                                @Context CycleAvoidingContext cycleCtx);
+    LkvLeistungskategorie toDbo(LkvLeistungskategorieDto dto,
+                                @Context LkvLeistungskategorieContext lkvlklkvlkCtx,
+                                @Context CycleAvoidingContext cycleCtx);
 
-    public LkvLeistungskategorie toDbo(LeistungskategorieDto dto,
+    default LkvLeistungskategorie toDbo(LeistungskategorieDto dto,
                                        @Context LkvLeistungskategorieContext lkvlkCtx,
                                        @Context CycleAvoidingContext cycleCtx) {
         var lkvLeistungskategorieDto = new LkvLeistungskategorieDto(lkvlkCtx.getLkBudgetKundenvertragDto(), dto);
