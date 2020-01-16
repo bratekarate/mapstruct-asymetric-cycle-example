@@ -27,9 +27,13 @@ public interface LkBudgetKundenVertragMapper {
                                 @Context CycleAvoidingContext cycleCtx);
 
     default LkvLeistungskategorie toDbo(LeistungskategorieDto dto,
-                                       @Context LkvLeistungskategorieContext lkvlkCtx,
-                                       @Context CycleAvoidingContext cycleCtx) {
-        var lkvLeistungskategorieDto = new LkvLeistungskategorieDto(lkvlkCtx.getLkBudgetKundenvertragDto(), dto);
-        return toDbo(lkvLeistungskategorieDto, lkvlkCtx, cycleCtx);
+                                        @Context LkvLeistungskategorieContext lkvlkCtx,
+                                        @Context CycleAvoidingContext cycleCtx) {
+        return toDbo(
+                LkvLeistungskategorieDto.builder()
+                        .lkBudgetKundenvertrag(lkvlkCtx.getLkBudgetKundenvertragDto())
+                        .leistungskategorie(dto)
+                        .build(),
+                lkvlkCtx, cycleCtx);
     }
 }

@@ -11,7 +11,10 @@ plugins {
 }
 
 ext {
-    mapstructVersion = '1.2.0.Final'
+    mapstructVersion = '1.2.0.Final' // MUST be 1.2.0.Final! Disabling builders did not work for me with 1.3.0.Final
+                                     // src/resources/META-INF/services was ignored. Gradle/Spring boot issue?
+                                     // Tried to follow the hint in the last paragraph of the reference documentation:
+                                     // https://mapstruct.org/documentation/stable/reference/html/#mapping-with-builders
     lombokVersion = '1.18.10'
 }
 
